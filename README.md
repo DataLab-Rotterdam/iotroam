@@ -273,10 +273,10 @@ The error message includes:
 ## License
 
 Apache 2.0
-See [LICENSE](./LICENSE)
+See [LICENSE](https://github.com/DataLab-Rotterdam/iotroam/blob/main/LICENSE)
 
 ---
 
 ## Maintainer
-DataLab Rotterdam
+[DataLab Rotterdam](https://datalabrotterdam.nl)
 
