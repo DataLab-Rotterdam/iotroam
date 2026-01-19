@@ -322,8 +322,15 @@ export const client = (config: ClientConfig) => {
         const res = await fetchImpl(url.toString(), init);
 
         if (!res.ok) {
-            const txt = await res.text().catch(() => "");
-            throw new Error(`HTTP ${res.status} ${res.statusText}: ${txt}`);
+            let message: string;
+            if (res.headers.get('content-type') === "application/json") {
+                const {detail} = await res.json()
+                if (detail) message = detail;
+            } else {
+                message = await res.text().catch(() => `Unknown error ${res.status} ${res.statusText}`)
+            }
+            //@ts-ignore
+            throw new Error(message, {cause: res});
         }
 
         if ((method as string) === "DELETE") return undefined as Ret<P, M>;
@@ -353,14 +360,14 @@ export const client = (config: ClientConfig) => {
             create: (input: DeviceAPI["/api/v1/device/add"]["POST"]["parameters"]["$body"], requestInit?: RequestInit) =>
                 request("/api/v1/device/add", "POST", {$body: input}, requestInit),
             get: (input: DeviceAPI["/api/v1/device/{id}/details"]["GET"]["parameters"]["$path"], requestInit?: RequestInit) =>
-                request("/api/v1/device/{id}/details", "GET", {$path: input},requestInit),
+                request("/api/v1/device/{id}/details", "GET", {$path: input}, requestInit),
             update: (
                 input: DeviceAPI["/api/v1/device/{id}/edit"]["PUT"]["parameters"]["$path"],
                 update: DeviceAPI["/api/v1/device/{id}/edit"]["PUT"]["parameters"]["$body"],
                 requestInit?: RequestInit
-            ) => request("/api/v1/device/{id}/edit", "PUT", {$path: input, $body: update},requestInit),
+            ) => request("/api/v1/device/{id}/edit", "PUT", {$path: input, $body: update}, requestInit),
             delete: (input: DeviceAPI["/api/v1/device/{id}/delete"]["DELETE"]["parameters"]["$path"], requestInit?: RequestInit) =>
-                request("/api/v1/device/{id}/delete", "DELETE", {$path: input},requestInit),
+                request("/api/v1/device/{id}/delete", "DELETE", {$path: input}, requestInit),
         },
         request, // optional: expose the generic request
         set apiKey(apiKey: string) {
