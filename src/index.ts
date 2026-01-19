@@ -327,7 +327,8 @@ export const client = (config: ClientConfig) => {
                 const {detail} = await res.json()
                 if (detail) message = detail;
             } else {
-                message = await res.text().catch(() => `Unknown error ${res.status} ${res.statusText}`)
+                const detail = await res.text().catch(() => '')
+                message = `HTTP ${res.status} ${res.statusText}: ${detail}`
             }
             //@ts-ignore
             throw new Error(message, {cause: res});
