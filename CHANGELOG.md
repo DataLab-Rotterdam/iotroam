@@ -1,3 +1,10 @@
+## [1.0.3](https://github.com/DataLab-Rotterdam/iotroam/compare/v1.0.2...v1.0.3) (2026-01-19)
+
+
+### Bug Fixes
+
+* better json error handling direct to client ([2b0d6bb](https://github.com/DataLab-Rotterdam/iotroam/commit/2b0d6bb18578199735b10957996f6a51d9962bdd))
+
 ## [1.0.2](https://github.com/DataLab-Rotterdam/iotroam/compare/v1.0.1...v1.0.2) (2026-01-19)
 
 
