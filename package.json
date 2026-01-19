@@ -23,6 +23,7 @@
     "examples/groups": "tsx --env-file=.env examples/groups.ts",
     "examples/group/devices": "tsx --env-file=.env examples/group.devices.ts",
     "examples/device/add": "tsx --env-file=.env examples/device.add.ts",
+    "examples/device/delete": "tsx --env-file=.env examples/device.delete.ts",
     "examples/device/edit": "tsx --env-file=.env examples/device.edit.ts",
     "examples/device/get": "tsx --env-file=.env examples/device.get.ts",
     "test:coverage": "vitest run --coverage",

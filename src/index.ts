@@ -323,9 +323,8 @@ export const client = (config: ClientConfig) => {
 
         if (!res.ok) {
             let message: string;
-            if (res.headers.get('content-type') === "application/json") {
-                const {detail} = await res.json()
-                if (detail) message = detail;
+            if (res.headers.get('content-type')?.startsWith("application/json")) {
+                await res.json().then(({detail}) => message = detail);
             } else {
                 const detail = await res.text().catch(() => '')
                 message = `HTTP ${res.status} ${res.statusText}: ${detail}`

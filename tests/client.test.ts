@@ -261,6 +261,20 @@ describe("iotroam client", () => {
         );
     });
 
+    it("throws on non-ok response and includes response json ({'detail': <ERROR_MESSAGE>})", async () => {
+        const fetchMock = vi.fn(async () => {
+            return new Response(JSON.stringify({detail: "bad things happened"}), {
+                status: 400,
+                statusText: "Bad Request",
+                headers: { "content-type": "text/plain" },
+            });
+        });
+
+        const api = iotroam({ apiKey: "TOP", fetchImpl: fetchMock as any });
+
+        await expect(api.groups.list()).rejects.toThrow("bad things happened");
+    });
+
     it("supports updating apiKey via setter", async () => {
         const fetchMock = vi.fn(async () => {
             return new Response(JSON.stringify({ items: [], count: 0 }), {
