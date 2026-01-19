@@ -49,10 +49,13 @@ export type DeviceDetails = {
         url: string,
     }
     password: string,
-    expiry: string,
+    expiry: string | null,
     last_seen: string | null,
     location: string | null,
+    last_known_ip: string | null,
+    last_updated: string | null,
     url: string
+
 }
 
 export type DeviceAPI = {
@@ -253,7 +256,7 @@ type AnyArgs = {
     $body?: unknown;
 };
 
-const client = (config: ClientConfig) => {
+export const client = (config: ClientConfig) => {
     const resolvedBase =
         config.baseURL === undefined
             ? baseURL
@@ -365,8 +368,6 @@ const client = (config: ClientConfig) => {
         }
     };
 };
-
-export const iotroam = client;
 
 export default client
 //endregion

@@ -1,4 +1,4 @@
-import iotroam from "../src";
+import iotroam from "../src/index.js";
 
 const {devices} = iotroam({
     apiKey: process.env['X_API_KEY']!
