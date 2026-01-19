@@ -1,6 +1,6 @@
 {
   "name": "iotroam",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A TypeScript-first, dependency-free API client for the SURF IoTroam REST API",
   "main": "./dist/index.es.js",
   "module": "./dist/index.es.js",
