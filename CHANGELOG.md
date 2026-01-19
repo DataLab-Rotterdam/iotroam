@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/DataLab-Rotterdam/iotroam/compare/v1.0.0...v1.0.1) (2026-01-19)
+
+
+### Bug Fixes
+
+* added missing properties on DeviceDetails ([3db2506](https://github.com/DataLab-Rotterdam/iotroam/commit/3db2506ebc90e58699c89d01becaa81ccb60d7ea))
+
 # 1.0.0 (2026-01-18)
 
 
